@@ -8,7 +8,9 @@ export default function useCustomHook(){
     
     // 구조분해 할당
     const [ string, setString ] = useState("");
+    const [ number, setNumber ] = useState(0);
     const [ bool, setBool ] = useState(false);
+    const [ boolB, setBoolB ] = useState(false);
     const [ array,setArray ] = useState([]);
     
     return{
@@ -18,7 +20,11 @@ export default function useCustomHook(){
         setString,
         bool,
         setBool,
+        boolB, 
+        setBoolB,
         array,
         setArray,
+        number, 
+        setNumber
     }
 }
