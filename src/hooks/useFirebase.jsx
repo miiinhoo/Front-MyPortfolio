@@ -1,78 +1,59 @@
-// 댓글 폼 + 목록 상태/행동 훅
-import { useState } from "react";                 
-import { hashPassword } from "../utils/hashPassword";  
+// useFirebase.jsx
 import { auth } from "../firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import useCustomHook from "./useCustomHook";
+import { hashPassword } from "../utils/hashPassword";
+import { useState } from "react";
 
 export default function useFirebase({ initFormData, api }) {
-
-  
-
-  // formData : 입력폼 상태
   const [formData, setFormData] = useState(initFormData());
-  // comments : 댓글 리스트
-  const [comments, setComments] = useState([]);       
-  // loading : 로딩여부
-  const [loading, setLoading] = useState(false);       
-  // error : 에러메시지
-  const [error, setError] = useState(null);             
+  const [comments, setComments] = useState([]);
 
-  const handleChange = (e) => {                          
-    const { name, value } = e.target;                    
-    setFormData(prev => ({ ...prev, [name]: value }));  
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // tryGet : 댓글 조회
-  const tryGet = async () => {                            
-    try {
-      setLoading(true);                                   
-      const list = await api.get();                       
-      setComments(list);                            
-      setError(null);                                                                 
-    } catch (err) {
-      setError("조회 실패");                          
-      console.error(err);                             
-      return [];
-    } finally {
-      setLoading(false);                            
-    }
+  const tryGet = async () => {
+    const list = await api.get();
+    setComments(list);
   };
 
-  // tryAdd : 댓글 추가
-  const tryAdd = async (uid = null) => {                   
+  const tryAdd = async (uid = null, isPrivate = false, isHidden = false) => {
     try {
-      setLoading(true);     
       const user = auth.currentUser;
-      const token = await user.getIdTokenResult();
+      let userId = formData.userId;
+      let userUid = uid;
+      let isAdminUser = false;
 
-      const payload = {                                   
-      userId: token.claims.admin ? "관리자" : formData.userId,                          
-        comment: formData.comment,                          
+      if (user) {
+        const token = await user.getIdTokenResult(true);
+        if (token?.claims?.admin) {
+          userId = "관리자";
+          userUid = user.uid;
+          isAdminUser = true;
+        } else {
+          userUid = user.uid;
+        }
+      }
+
+      const payload = {
+        userId,
+        comment: formData.comment,
         passwordHash: await hashPassword(formData.password),
-        uid,                                                
+        uid: userUid ?? null,
+        isPrivate,
+        isHidden,
+        isAdmin: isAdminUser, 
+        createdAt: new Date(), 
       };
-      await api.add(payload);                              
-      console.log("추가성공")
-      setFormData(initFormData());                         
-      await tryGet();                                 
+      alert("댓글 작성 완료!");
+      await api.add(payload);
+      setFormData(initFormData());
+      await tryGet();
     } catch (err) {
-      setError("추가 실패");                             
-      console.error(err);                            
-    } finally {
-      setLoading(false);                                    
+      console.error("댓글 작성 실패:", err);
+      alert("댓글 작성 중 오류가 발생했습니다.");
     }
   };
 
-  
-  return {                                                 
-    formData,                                              
-    setFormData,                                   
-    comments,                                          
-    loading,                                      
-    error,                                         
-    handleChange,                                   
-    tryGet,                                   
-    tryAdd,                                         
-  };
+  return { formData, setFormData, comments, handleChange, tryGet, tryAdd };
 }

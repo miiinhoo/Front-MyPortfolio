@@ -24,7 +24,8 @@ export default function useAuth(){
         console.error("관리자로그인이 실패했습니다.",e.message)
     }
     }
-    return{
-        handleAdminLogin
-    }
+
+        return{
+            handleAdminLogin
+        }
     }
