@@ -9,9 +9,11 @@ export default function BasicHeader(){
     return(
         <div className="header-inner">
             <div className="main-logo">
-                <Link>
-                    Minho
-                </Link>
+                <h1>
+                    <Link to="/">
+                        Minho
+                    </Link>
+                </h1>
             </div>
             <nav id="gnb">
                 <ul>

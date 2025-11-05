@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import BasicHeader from "./header/BasicHeader";
 import useCustomHook from "../hooks/useCustomHook";
+import "./Layout.scss";
 
 export default function BasicLayout(){
     const { location } = useCustomHook();
