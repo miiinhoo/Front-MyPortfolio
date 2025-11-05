@@ -54,6 +54,9 @@ export default function useFirebase({ initFormData, api }) {
       alert("댓글 작성 중 오류가 발생했습니다.");
     }
   };
+  const tryDel = () => {
+    
+  }
 
   return { formData, setFormData, comments, handleChange, tryGet, tryAdd };
 }
