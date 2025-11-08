@@ -5,5 +5,29 @@
     width: 70%;
     font-size: 30px;
     text-align: center;
+    position: relative;
+    .floatBox{
+        display: flex;
+        flex-direction: column;
+        width: 100px;
+        font-size: 25px;
+        border: 1px solid #333;
+        border-radius: 15px;
+        background-color: white;
+        color: black;
+        position: absolute;
+        top:-30px;right:48%;
+        &::after{
+            content: "";
+            display: block;
+            width: 30px;
+            height: 20px;
+            clip-path: polygon(0% 50%, 70% 0%, 100% 100%);
+            transform: rotate(135deg);
+            background-color: white;
+            position: absolute;
+            bottom: 18%;left: -17px;
+        }
+    }
 }
 .swiper{width: 70%;height: 100%;border: 1px solid;}
