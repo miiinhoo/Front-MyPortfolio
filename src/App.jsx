@@ -1,11 +1,16 @@
 import { RouterProvider } from 'react-router-dom'
 import './App.scss'
+import { Toaster } from "react-hot-toast";
 import root from './routers/root'
 import './Tailwind.css';
 
 function App() {
   return (
-   <RouterProvider router={root}/>
+    <>
+      <Toaster position="top-right" reverseOrder={false} />
+      <RouterProvider router={root}/>
+    </>
+   
   )
 }
 

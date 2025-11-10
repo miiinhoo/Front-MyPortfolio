@@ -12,6 +12,7 @@ import { useAdmin } from "../../routers/protected/AdminContext";
 import useCustomHook from "../../hooks/useCustomHook";
 import { formatDate } from "../../utils/formatDate";
 import { hasBadWord } from "../../utils/filteredWord";
+import { toast } from "react-hot-toast";
 
 const api = { get: getComments, add: addComment };
 
@@ -46,17 +47,17 @@ export default function CommentPage() {
 
   const submitHandler = () => {
     if (!isAdmin && formData.userId.includes("admin") || formData.userId.includes("관리")) {
-      alert("불가능한 아이디입니다.");
+      toast.error("불가능한 아이디입니다.");
       return;
     }
     if (!formData.userId.trim()) {
-      alert("아이디를 입력하세요.");
+      toast.error("아이디를 입력하세요.");
       return;
     } else if (!formData.password.trim()) {
-      alert("비밀번호를 입력하세요.");
+      toast.error("비밀번호를 입력하세요.");
       return;
     } else if (!formData.comment.trim()) {
-      alert("댓글을 입력하세요.");
+      toast.error("댓글을 입력하세요.");
       return;
     }
 
@@ -67,7 +68,7 @@ export default function CommentPage() {
       hasBadWord(formData.userId) ||
       hasBadWord(formData.password)
     ) {
-      alert("부적절한 단어가 포함되어 있습니다.");
+      toast.error("부적절한 단어가 포함되어 있습니다.");
       return;
     }
 
@@ -104,7 +105,7 @@ export default function CommentPage() {
                       : list.userId}
                   </span>
                   <span>{list.comment}</span>
-                  <span className="date">{formatDate(list.createdAt)}</span> {/* ✅ 날짜 표시 */}
+                  <span className="date">{formatDate(list.createdAt)}</span>
 
                   {isAdmin && (
                     <>
