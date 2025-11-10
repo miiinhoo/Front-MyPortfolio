@@ -4,17 +4,17 @@ import ButtonComponent from "../../components/common/ButtonComponent";
 import "./Swiper.scss";
 
 export default function ThirdPage(){
-    const { bool,setBool, boolB: openSide, setBoolB:setOpenSide } = useCustomHook();
+    const { bool,setBool,boolB: openSide, setBoolB:setOpenSide } = useCustomHook();
     return(
         <section>
             <div className="page-inner">
                 <div className="button-area">
-                    <ButtonComponent text={"Front & Design"} 
-                    event={() => {setBool(true);setOpenSide(true)}}
-                    cln={bool ? "bold":""}/>
+                    <ButtonComponent text={"Project & Design"} 
+                    event={() => {setBool(prev => !prev);setOpenSide(true)}}
+                    cln="bold"/>
                     {bool ? (
                         <div className={"floatBox"}>
-                            <ButtonComponent text={"Front"} 
+                            <ButtonComponent text={"Project"} 
                             event={() => setOpenSide(true)}
                             cln={openSide ? "bold":""}/>
                             <ButtonComponent text={"Design"} 
@@ -22,12 +22,9 @@ export default function ThirdPage(){
                             cln={!openSide ? "bold":""}/>
                         </div>                        
                         ):(<></>)}
-                    <ButtonComponent text={"Team"} 
-                    event={() => setBool(false)}
-                    cln={!bool ? "bold":""}/>
                 </div>
                 
-                <SwiperPage bool={bool} openSide={openSide}/>
+                <SwiperPage openSide={openSide}/>
             </div>
         </section>
         

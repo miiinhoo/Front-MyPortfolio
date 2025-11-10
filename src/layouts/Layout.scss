@@ -15,9 +15,6 @@
     height: 15vh;
     border-bottom: 1px solid white;
     position: fixed;
-    &.rel{
-      position: relative;
-    }
     .header-inner{
         display: flex;
         justify-content: space-between;
@@ -139,3 +136,31 @@
 
 
 .bold{font-weight: bold;}
+.rel{
+      position: relative !important;
+  }
+
+.abs {
+  position: absolute;
+  top: 100%;
+  left: 20%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  background-color: #3f3f46;
+  font-size: 1rem;
+  transform-origin: top;
+  transform: scaleY(0);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+
+  &.down {
+    transform: scaleY(1);
+    opacity: 1;
+    visibility: visible;
+  }
+}

@@ -7,7 +7,7 @@ export default function BasicLayout(){
     const { location } = useCustomHook();
     return (
         <div className="site-wrapper">
-            <header className={location.pathname !== "/" ? "rel":""}>
+            <header className={location.pathname !== "/" && !location.pathname.includes("/about") ? "rel":""}>
                 <BasicHeader/>
             </header>
             <>
