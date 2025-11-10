@@ -1,4 +1,5 @@
 // useFirebase.jsx
+import toast from "react-hot-toast";
 import { auth } from "../firebase";
 import { hashPassword } from "../utils/hashPassword";
 import { useState } from "react";
@@ -14,6 +15,7 @@ export default function useFirebase({ initFormData, api }) {
 
   const tryGet = async () => {
     const list = await api.get();
+    toast.success("댓글 불러오기 완료!");
     setComments(list);
   };
 
@@ -45,13 +47,13 @@ export default function useFirebase({ initFormData, api }) {
         isAdmin: isAdminUser, 
         createdAt: new Date(), 
       };
-      alert("댓글 작성 완료!");
+      toast.success("댓글 작성 완료!");
       await api.add(payload);
       setFormData(initFormData());
       await tryGet();
     } catch (err) {
       console.error("댓글 작성 실패:", err);
-      alert("댓글 작성 중 오류가 발생했습니다.");
+      toast.error("댓글 작성 중 오류가 발생했습니다.");
     }
   };
   const tryDel = () => {
