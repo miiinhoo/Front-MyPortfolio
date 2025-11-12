@@ -8,7 +8,7 @@ export default function FirstPage(){
     useEffect(() => {
         const interval = setInterval(() => {
             setIndex((prev)=> (prev + 1) % Title.length);
-        },4000);
+        },5500);
         return () => clearInterval(interval);
     },[Title.length]);
 
