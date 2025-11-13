@@ -1,4 +1,4 @@
-import { Skill } from "../../arrays/SkillArrays";
+import { Skills } from "../../arrays/SkillArrays";
 
 export default function SecondPage(){
     return(
@@ -6,14 +6,18 @@ export default function SecondPage(){
             <div className="page-inner">
                 <h2>SKILL</h2>
                 <div className="skill-wrapper">
-                    {Skill.map(li => (
+                    {Skills.map(li => (
                         <>
                             <p className="skill-title">
-                                {li.text}
+                                {li.category}
                             </p>
                             <div key={li.id} className="skill-content">
-                                
-                                {li.option.map((v,inx) => (<p key={inx} className="skills">{v}</p>))}
+                                {li.items.map((v,inx) => (
+                                    <div key={inx}>
+                                        <img className="skills" src={v.img} alt="skill"/>
+                                        <p>{v.label}</p>
+                                    </div>
+                                ))}
                             </div>
                         </>
                     ))}
