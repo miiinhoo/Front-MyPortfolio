@@ -9,6 +9,7 @@ export default function useCustomHook(){
     // 구조분해 할당
     const [ string, setString ] = useState("");
     const [ number, setNumber ] = useState(0);
+    const [ numberB, setNumberB ] = useState(0);
     const [ bool, setBool ] = useState(false);
     const [ boolB, setBoolB ] = useState(false);
     const [ array,setArray ] = useState([]);
@@ -25,6 +26,8 @@ export default function useCustomHook(){
         array,
         setArray,
         number, 
-        setNumber
+        setNumber,
+        numberB,
+        setNumberB
     }
 }
