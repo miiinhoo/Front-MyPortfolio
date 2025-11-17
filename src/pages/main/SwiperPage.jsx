@@ -18,6 +18,7 @@ export default function SwiperPage({ string }) {
 
   return (
     <Swiper
+      modules={[Navigation, Pagination, Autoplay]} 
       modules={[Navigation, Pagination, Autoplay, EffectCoverflow]}
       navigation
       pagination={{ clickable: true }}
