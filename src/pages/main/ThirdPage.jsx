@@ -2,9 +2,12 @@ import useCustomHook from "../../hooks/useCustomHook";
 import SwiperPage from "./SwiperPage";
 import ButtonComponent from "../../components/common/ButtonComponent";
 import "./Swiper.scss";
+import { Button } from "../../arrays/SwiperArrays";
+import { useState } from "react";
 
 export default function ThirdPage(){
-    const { bool,setBool,boolB: openSide, setBoolB:setOpenSide } = useCustomHook();
+    const { bool,setBool } = useCustomHook();
+    const [ string, setString ] = useState("Front");
     return(
         <section>
             <div className="page-inner">
@@ -14,17 +17,21 @@ export default function ThirdPage(){
                     cln="bold"/>
                     {bool ? (
                         <div className={"floatBox"}>
-                            <ButtonComponent text={"Project"} 
-                            event={() => setOpenSide(true)}
-                            cln={openSide ? "bold":""}/>
-                            <ButtonComponent text={"Design"} 
-                            event={() => setOpenSide(false)}
-                            cln={!openSide ? "bold":""}/>
+                            {
+                                Button.map((temp,index) => (
+                                    <ButtonComponent
+                                    key={index}
+                                        text={temp.text}
+                                        event={() => setString(temp.text)}
+                                        cln={string === temp.text ? "bold":""}
+                                    />
+                                ))
+                            }
                         </div>                        
                         ):(<></>)}
                 </div>
                 
-                <SwiperPage openSide={openSide}/>
+                <SwiperPage string={string}/>
             </div>
         </section>
         
