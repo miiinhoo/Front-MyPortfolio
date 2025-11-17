@@ -8,7 +8,7 @@ import Paytime from '../../paytime.PNG';
 export default function SwiperPage({openSide}){
     return(
     <Swiper
-      modules={[Navigation, Pagination, Autoplay]}  // 사용할 기능
+      modules={[Navigation, Pagination, Autoplay]} 
       navigation
       pagination={{ clickable: true }}
       autoplay={{ delay: 2500, disableOnInteraction: false }}
