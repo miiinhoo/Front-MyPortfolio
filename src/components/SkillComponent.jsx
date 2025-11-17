@@ -26,14 +26,18 @@ export default function SkillComponent({ data }) {
     if (!line) return;
 
     const timeout = setTimeout(() => {
-        if(charIndex < line.length){
-            setText(prev => prev + line[charIndex]);
-            setCharIndex(prev => prev + 1);
-        }else{
-            setText(prev => prev + "\n");
-            setLineIndex(prev => prev + 1);
-            setCharIndex(0);
-        }   
+      if (charIndex < line.length) {
+        setText(prev => prev + line[charIndex]);
+        setCharIndex(prev => prev + 1);
+      } 
+      else {
+        if (lineIndex < data.desc.length - 1) {
+          setText(prev => prev + "\n");
+        }
+        setLineIndex(prev => prev + 1);
+        setCharIndex(0);
+      }
+        
     }, 40);
 
     return () => clearTimeout(timeout);
