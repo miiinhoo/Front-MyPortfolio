@@ -3,7 +3,7 @@ import { lazy, Suspense } from "react";
 
 const loading = <div>로딩중..</div>;
 const Profile = lazy(() => import("../pages/about/ProfilePage"));
-const Project = lazy(() => import("../pages/about/ProjectPage"));
+const Work = lazy(() => import("../pages/about/WorkPage"));
 
 const AboutRouter = [
   {
@@ -26,7 +26,7 @@ const AboutRouter = [
     path: "work",
     element: (
       <Suspense fallback={loading}>
-        <Project />
+        <Work />
       </Suspense>
     ),
   },
