@@ -7,56 +7,44 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 export default function SwiperPage({ string }) {
-
-  const [bubble, setBubble] = useState(null);
-
-  useEffect(() => {
-    setBubble(null);
-  }, [string]);
-
+  const [activeIndex, setActiveIndex] = useState(0);
   const target = SwiperArray.find(v => v.name === string) || SwiperArray[0];
 
   return (
     <Swiper
-      modules={[Navigation, Pagination, Autoplay]} 
       modules={[Navigation, Pagination, Autoplay, EffectCoverflow]}
-      navigation
-      pagination={{ clickable: true }}
-      loop={true}
       effect="coverflow"
       centeredSlides={true}
-      slidesPerView={1}
-      speed={800}
+      grabCursor={true}
+      slidesPerView={3}
+      loop={true}
       coverflowEffect={{
-        rotate: 0,
-        depth: 150,
+        rotate: 15,        // 좌우 카드 기울기
         stretch: 0,
+        depth: 250,        // 입체감
+        modifier: 1.2,
         slideShadows: false,
       }}
+      speed={1200}
+      navigation
+      onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
+      pagination={{ clickable: true }}
       className="mySwiper"
     >
       {target?.options?.map((temp, index) => (
-        <SwiperSlide
+        <>
+          <SwiperSlide
           key={index}
           className="slide"
-          onClick={(e) => {
-            const rect = e.currentTarget.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            setBubble({ x, y, text: temp.text });
-          }}
-        >
-          <div className="slide-content">
-            {temp.source && <img src={temp.source} alt={temp.text} />}
-            {temp.text && <p>{temp.text}</p>}
-          </div>
-
-          {bubble && (
-            <div className="slide-bubble" style={{ left: bubble.x, top: bubble.y }}>
-              {bubble.text}
+          >
+            <div className="slide-content">
+              {temp.source && <img src={temp.source} alt={temp.text} />} 
             </div>
-          )}
-        </SwiperSlide>
+            {activeIndex === index && (
+            <div className="slide-title">{temp.text}</div>
+            )}
+          </SwiperSlide>
+          </>
       ))}
     </Swiper>
   );
