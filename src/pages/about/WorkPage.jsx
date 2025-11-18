@@ -1,11 +1,6 @@
-export default function ProjectPage(){
+export default function WorkPage(){
     return(
         <>
-            <section>
-                <div className="page-inner">
-                    work
-                </div>
-            </section>
             <section>
                 <div className="page-inner">
                     work
