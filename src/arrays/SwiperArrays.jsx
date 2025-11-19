@@ -1,4 +1,4 @@
-import { Designer, Sherlock, MLB, Vonin, Paytime} from '../imgs/projects/common/project.jsx';
+import { Designer, Sherlock, MLB, Vonin, Paytime,Wooden} from '../imgs/projects/common/project.jsx';
 
 export const SwiperArray = [
     {
@@ -8,6 +8,10 @@ export const SwiperArray = [
             {
                 source: Paytime,
                 text:"Paytime"
+            },
+            {
+                source: Wooden,
+                text:"Wooden"
             },
             {
                 source: Paytime,

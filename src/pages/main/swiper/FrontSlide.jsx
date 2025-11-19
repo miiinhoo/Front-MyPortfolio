@@ -15,9 +15,8 @@ export default function FrontSlide() {
       effect="coverflow"
       centeredSlides={true}
       grabCursor={true}
-      slidesPerView={3}
+      slidesPerView={"auto"}
       autoplay={{ delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true }}
-      loop={true}
       coverflowEffect={{
         rotate: 15,
         stretch: 0,

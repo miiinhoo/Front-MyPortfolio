@@ -17,7 +17,6 @@ export default function DesignSlide() {
       grabCursor={true}
       slidesPerView={3}
       autoplay={{ delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true }}
-      loop={true}
       coverflowEffect={{
         rotate: 15,
         stretch: 0,
@@ -29,6 +28,7 @@ export default function DesignSlide() {
       navigation
       pagination={{ clickable: true }}
       className="designSwiper"
+      style={{marginTop:"20px"}}
     >
       {design.options.map((slider, index) => (
         <SwiperSlide key={index} className="slide">
