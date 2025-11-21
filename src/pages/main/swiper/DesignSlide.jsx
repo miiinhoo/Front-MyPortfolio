@@ -14,7 +14,6 @@ export default function DesignSlide() {
       modules={[Navigation, Pagination, Autoplay, EffectCoverflow]}
       effect="coverflow"
       centeredSlides={true}
-      grabCursor={true}
       slidesPerView={3}
       autoplay={{ delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true }}
       coverflowEffect={{

@@ -1,4 +1,13 @@
-import { Designer, Sherlock, MLB, Vonin, Paytime,Wooden} from '../imgs/projects/common/project.jsx';
+import { 
+    Designer, 
+    Sherlock, 
+    MLB, 
+    Vonin, 
+    Paytime,
+    Wooden,
+    Exchange,
+    FrontPortFolio 
+} from '../imgs/projects/common/project.jsx';
 
 export const SwiperArray = [
     {
@@ -14,12 +23,12 @@ export const SwiperArray = [
                 text:"Wooden"
             },
             {
-                source: Paytime,
-                text:"front2"
+                source: Exchange,
+                text:"Exchange Forecast"
             },
             {
-                source: Paytime,
-                text:"front3"
+                source: FrontPortFolio,
+                text:"Portfolio"
             },
         ]
     },
