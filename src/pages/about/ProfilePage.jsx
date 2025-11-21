@@ -1,10 +1,10 @@
 export default function Profile() {
   return (
-    <section>
-      <div className="page-inner">
-        <div className="text-left w-2/3 m-auto text-2xl mt-14">
+    <section className="pages">
+      <div className="page-inner work">
+        <div className="text-left w-2/3 m-auto text-2xl">
             <div className="intro">
-            <h2 className="font-extrabold text-center mb-[1rem] mt-[1rem]">About Me</h2>
+            <h2 className="font-extrabold text-center mb-[1rem]">About Me</h2>
             <p>
                 안녕하세요. 사용자 경험을 중심으로 코드를 설계하는 
                 <strong> 프론트엔드 개발자 김민호</strong>입니다.
