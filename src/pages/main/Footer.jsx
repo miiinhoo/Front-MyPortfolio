@@ -1,5 +1,5 @@
 export default function Footer(){
     return(
-        <>푸터</>
+        <>© 2025 Kim Minho. Front-End Developer.</>
     )
 }

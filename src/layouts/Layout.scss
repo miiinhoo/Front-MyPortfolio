@@ -14,6 +14,7 @@
     backdrop-filter: blur(3px);
     background-color: rgba(255,255,255,0.05);
     position: fixed;
+    border-bottom: 1px solid var(--sub);
     .header-inner{
         display: flex;
         justify-content: space-between;
@@ -46,6 +47,22 @@
     height: 100vh;
     background-color: var(--back);
     font-family: var(--MainFont);
+    &.pages{
+      height: 85vh;
+      padding-top: 0px;
+    }
+    // About페이지
+    .centered-box{
+      width: 50%;
+      height: 50%;
+      background-color: lightskyblue;
+      position: absolute;
+      top:50%;left:50%;
+      transform: translate(-50%,-50%);
+    }
+
+
+    // 일반 페이지
     .page-inner{
         box-sizing: border-box;
         width: 85%;
@@ -53,6 +70,9 @@
         text-align: center;
         padding: 15vh 0 0;
         margin: 0 auto;
+        &.work{
+          padding-top: 5vh;
+        }
         .text-wrapper{
           display: flex;
           flex-direction: column;
@@ -131,7 +151,7 @@
           width: 50%;
           .typing-text {
             white-space: pre-wrap;
-            font-size: 26px;
+            font-size: 22px;
             line-height: 1.6;
           }
 
@@ -164,6 +184,7 @@
 .bold{font-weight: bold;}
 .rel{
       position: relative !important;
+      
   }
 
 .abs {
