@@ -14,7 +14,6 @@ export default function FrontSlide() {
       modules={[Navigation, Pagination, Autoplay, EffectCoverflow]}
       effect="coverflow"
       centeredSlides={true}
-      grabCursor={true}
       slidesPerView={"auto"}
       autoplay={{ delay: 2500, disableOnInteraction: false, pauseOnMouseEnter: true }}
       coverflowEffect={{

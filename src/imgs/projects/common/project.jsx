@@ -4,5 +4,15 @@ import MLB from '../mlb.png';
 import Vonin from '../vonin.png';
 import Paytime from '../paytime.PNG';
 import Wooden from '../wooden.JPG';
+import Exchange from '../Exchange.JPG';
+import FrontPortFolio from '../FrontPF.JPG';
 
-export { Designer, Sherlock, MLB, Vonin,Paytime,Wooden };
+export { Designer, 
+    Sherlock, 
+    MLB, 
+    Vonin,
+    Paytime,
+    Wooden,
+    Exchange,
+    FrontPortFolio 
+};
