@@ -8,8 +8,8 @@ export default function BasicLayout(){
     return (
         <div className="site-wrapper">
             <header className={
-                location.pathname !== "/" || 
-                location.pathname.includes("/about") 
+                location.pathname !== "/" &&
+                !location.pathname.includes("/about/works") 
                 ? 
                 "rel"
                 :
