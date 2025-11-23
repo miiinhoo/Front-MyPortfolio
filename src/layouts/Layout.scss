@@ -47,12 +47,28 @@
     height: 100vh;
     background-color: var(--back);
     font-family: var(--MainFont);
+    
     &.pages{
       height: 85vh;
       padding-top: 0px;
     }
     &.work-block{
       height: auto;
+      .work-list{
+        width: 100%;
+        .work-list-items{
+          display: flex;
+          width: inherit;
+          border: 2px solid black;
+          .text-inner{
+            width: 50%;
+          }
+        }
+      }
+      .work-images-wrapper{
+        flex: 1;
+        background-color: #1e1e1f;
+      }
     }
     // About페이지
     .centered-box{
