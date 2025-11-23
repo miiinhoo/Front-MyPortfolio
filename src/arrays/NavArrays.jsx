@@ -4,7 +4,7 @@ export const Nav = [
     },
     {
         id: 2, text: "About",option:[
-            "Profile","Work"
+            "Profile","Works"
         ]
     },
     {

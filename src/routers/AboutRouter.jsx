@@ -4,7 +4,7 @@ import WorkRouter from "./WorkRouter";
 
 const loading = <div>로딩중..</div>;
 const Profile = lazy(() => import("../pages/about/ProfilePage"));
-const Work = lazy(() => import("../pages/about/WorkPage"));
+
 
 const AboutRouter = [
   {
@@ -24,13 +24,8 @@ const AboutRouter = [
     ),
   },
   {
-    path: "work",
-    element: (
-      <Suspense fallback={loading}>
-        <Work/>
-      </Suspense>
-    ),
-    children: WorkRouter
+    path: "works",
+    children: [...WorkRouter]
   },  
 ];
 
