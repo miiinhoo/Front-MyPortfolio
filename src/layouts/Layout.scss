@@ -53,15 +53,25 @@
     }
     // About페이지
     .centered-box{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 3%;
       width: 50%;
       height: 50%;
       background-color: lightskyblue;
       position: absolute;
       top:50%;left:50%;
       transform: translate(-50%,-50%);
+      .site-box{
+      width: 40%;
+      height: 40%;
+      background-color: white;
     }
 
-
+    }
+    
     // 일반 페이지
     .page-inner{
         box-sizing: border-box;
