@@ -51,6 +51,9 @@
       height: 85vh;
       padding-top: 0px;
     }
+    &.work-block{
+      height: auto;
+    }
     // About페이지
     .centered-box{
       display: flex;
@@ -60,16 +63,19 @@
       gap: 3%;
       width: 50%;
       height: 50%;
-      background-color: lightskyblue;
       position: absolute;
       top:50%;left:50%;
       transform: translate(-50%,-50%);
       .site-box{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       width: 40%;
       height: 40%;
       background-color: white;
+      border: 1px solid var(--sub);
+      box-shadow: 2px 2px 15px rgb(0,0,0,0.5);
     }
-
     }
     
     // 일반 페이지
@@ -82,6 +88,14 @@
         margin: 0 auto;
         &.work{
           padding-top: 5vh;
+        }
+        .work-project-title{font-size: 30px;}
+        .work-list{
+          font-size: 40px;
+          font-family: var(--TypefaceFont);
+          p{
+            color: var(--sub);
+          }
         }
         .text-wrapper{
           display: flex;
