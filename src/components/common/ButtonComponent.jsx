@@ -1,4 +1,4 @@
-
+import '../Button.scss';
 
 export default function ButtonComponent({text,types,event,cln}){
     return(
