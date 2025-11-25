@@ -33,6 +33,10 @@
             display: flex;
             gap: 30px;
             font-size: 30px;
+            .nav-item{
+              font-weight: bold;
+              color: var(--sub2);
+            }
             }
         }
     }
@@ -221,11 +225,10 @@
 }
 
 
-.bold{font-weight: bold;}
+.bold{color: var(--black) !important;}
 .rel{
-      position: relative !important;
-      
-  }
+    position: relative !important;
+}
 
 .abs {
   position: absolute;
@@ -238,6 +241,7 @@
   padding: 0.8rem 1rem;
   border-radius: 12px;
   background-color: var(--back);
+  color: var(--black);
   border: 1px solid;
   font-size: 1rem;
   transform-origin: top;
