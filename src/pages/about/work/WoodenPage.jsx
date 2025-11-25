@@ -1,6 +1,7 @@
 import toast from "react-hot-toast";
 import ButtonComponent from "../../../components/common/ButtonComponent"
-import { LoginSlice,ProtectedRouter } from "../../../imgs/projects/common/project";
+import { apiimg, apiroot, ArrayRoot, Btn, CRUD1, CRUD2, CRUD3, formData, Head, LoginSlice,OutletAside,ProtectedRouter, Rootimg, Rootimg2, Table, Woodenmain } from "../../../imgs/projects/common/project";
+import WoodenVideo from '../../../imgs/projects/WoodenProjectVideo.mp4';
 
 export default function WoodenPage() {
     return(
@@ -17,8 +18,12 @@ export default function WoodenPage() {
               <div className="work-list-items">
                 
                 <div className="work-images-wrapper">
-                    <img src={ProtectedRouter} alt="" />
-                    <img src={LoginSlice} alt="" />
+                    <h3>ProtectedRotuer.jsx / 라우터가드 구조</h3>
+                    <img src={ProtectedRouter} alt={"라우터가드이미지"} />
+                    <h3>loginSlice.jsx</h3>
+                    <img src={LoginSlice} alt={"loginslice.jsx이미지"} />
+                    <h3>root.jsx</h3>
+                    <img src={Rootimg} alt={"root.jsx이미지"} />
                 </div>
 
                 <div className="text-inner">
@@ -57,7 +62,14 @@ export default function WoodenPage() {
               {/* ------------ CRUD 훅 ------------ */}
               <div className="work-list-items">
                 
-                <div className="work-images-wrapper"></div>
+                <div className="work-images-wrapper">
+                    <h3>useCRUD.jsx</h3>
+                    <img src={CRUD1} alt={"커스텀훅내부1"} />
+                    <h3>등록기능</h3>
+                    <img src={CRUD2} alt={"커스텀훅내부2"} />
+                    <h3>모달창 제어</h3>
+                    <img src={CRUD3} alt={"커스텀훅내부3"} />
+                </div>
 
                 
                 <div className="text-inner">
@@ -99,7 +111,12 @@ export default function WoodenPage() {
               {/* ------------ 공통 UI ------------ */}
               <div className="work-list-items">
                
-                <div className="work-images-wrapper"></div>
+                <div className="work-images-wrapper">
+                    <h3>components 폴더 구조</h3>
+                    <img src={Rootimg2} alt={"컴포넌트 폴더구조"} />
+                    <h3>ButtonComponent.jsx</h3>
+                    <img src={Btn} alt={"버튼컴포넌트"} />
+                </div>
 
                 
                 <div className="text-inner">
@@ -142,7 +159,14 @@ export default function WoodenPage() {
               {/* ------------ 테이블/폼 ------------ */}
               <div className="work-list-items">
                 
-                <div className="work-images-wrapper"></div>
+                <div className="work-images-wrapper">
+                    <h3>arrays 폴더 구조</h3>
+                    <img src={ArrayRoot} alt="arrays 경로이미지" />
+                    <h3>TableArrays.jsx / 초기 폼 스키마 구조</h3>
+                    <img src={Table} alt="폼초기화" />
+                    <h3>useCRUD.jsx / formData 초기화 흐름</h3>
+                    <img src={formData} alt="formData" />
+                </div>
 
                 
                 <div className="text-inner">
@@ -182,7 +206,12 @@ export default function WoodenPage() {
               {/* ------------ API 계층 ------------ */}
               <div className="work-list-items">
                 
-                <div className="work-images-wrapper"></div>
+                <div className="work-images-wrapper">
+                    <h3>api 폴더 구조</h3>
+                    <img src={apiroot} alt="" />
+                    <h3>API</h3>
+                    <img src={apiimg} alt="" />
+                </div>
 
                 
                 <div className="text-inner">
@@ -222,7 +251,14 @@ export default function WoodenPage() {
               {/* ------------ 레이아웃 ------------ */}
               <div className="work-list-items">
                 
-                <div className="work-images-wrapper"></div>
+                <div className="work-images-wrapper">
+                    <h3>레이아웃 전체 구조(UI) – 서브메뉴 / 헤더 / 메인 콘텐츠</h3>
+                    <img src={Woodenmain} alt="" />
+                    <h3>BasicLayout.jsx / Outlet이 들어있는 레이아웃 구조</h3>
+                    <img src={OutletAside} alt="" />
+                    <h3>HeaderLayout.jsx 구조</h3>
+                    <img src={Head} alt="" />
+                </div>
 
                 
                 <div className="text-inner">
@@ -263,7 +299,16 @@ export default function WoodenPage() {
 
                 </div>
               </div>
-
+              <h3>
+                시연영상
+              </h3>
+                <video 
+                src={WoodenVideo} 
+                autoPlay
+                muted
+                controls
+                style={{ width: '100%', borderRadius: "12px" }}
+                />
             </div>
         </div>
 
