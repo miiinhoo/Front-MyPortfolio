@@ -183,7 +183,7 @@ export default function WoodenPage() {
                     <strong>구조 설계</strong>
                     <p>
                         페이지들마다 입력 필드를 initForms 객체 안에 각각 정의하고,
-                        각 페이지는 initFormData: () => initForms.partOrder와 같이
+                        각 페이지는 initFormData: () ={'>'} initForms.partOrder와 같이
                         필요한 초기 폼 스키마만 useCRUD 훅에 주입하도록 구성했습니다.
                         이 스키마는 Spring Boot의 RequestDTO 필드명과 1:1로 매칭되어 있어,
                         formData를 그대로 전송해도 요청이 정상적으로 처리되는 형태입니다.

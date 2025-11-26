@@ -1,7 +1,9 @@
 export default function PaytimePage(){
     return(
-        <>
-            페이타임
-        </>
+        <section className="work-block">
+            <div className="page-inner">
+                123
+            </div>
+        </section>
     )
 }
