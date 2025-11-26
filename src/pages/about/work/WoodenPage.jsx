@@ -2,6 +2,7 @@ import toast from "react-hot-toast";
 import ButtonComponent from "../../../components/common/ButtonComponent"
 import { apiimg, apiroot, ArrayRoot, Btn, CRUD1, CRUD2, CRUD3, formData, Head, LoginSlice,OutletAside,ProtectedRouter, Rootimg, Rootimg2, Table, Woodenmain } from "../../../imgs/projects/common/project";
 import WoodenVideo from '../../../imgs/projects/WoodenProjectVideo.mp4';
+import { Link } from "react-router-dom";
 
 export default function WoodenPage() {
     return(
@@ -311,18 +312,47 @@ export default function WoodenPage() {
                 />
             </div>
         </div>
-
-        <ButtonComponent
-          types={"button"}
-          cln={"downBtn"}
-          event={() => {
-            window.scrollTo({
-                top: document.body.scrollHeight,
-                behavior: "smooth"
-            });
-            toast.success("맨 밑으로 이동했습니다.");
-          }}
-        />
+        <div className="fixed-buttons">
+            <ButtonComponent
+            types={"button"}
+            cln={"siteBtn"}
+            event={() => {
+               toast.success("Paytime 개인 프로젝트")
+            }}
+            >
+                <Link to={"/about/works/paytime"}>Pay<br/>time</Link>
+            </ButtonComponent>
+            <ButtonComponent
+            types={"button"}
+            cln={"siteBtn"}
+            event={() => {
+               toast.success("Paytime")
+            }}
+            >
+                <Link to={"/about/works/wooden"}>Woo<br/>den</Link>
+            </ButtonComponent>
+            <ButtonComponent
+            types={"button"}
+            cln={"siteBtn"}
+            event={() => {
+               toast.success("ARIMA 예측 팀 프로젝트")
+            }}
+            >
+                <Link to={"/about/works/python"}>ARI<br/>MA</Link>
+            </ButtonComponent>
+            <ButtonComponent
+            types={"button"}
+            cln={"downBtn"}
+            event={() => {
+                window.scrollTo({
+                    top: document.body.scrollHeight,
+                    behavior: "smooth"
+                });
+                toast.success("맨 밑으로 이동했습니다.");
+            }}
+            />
+        </div>
+        
         </section>
     )
 }
