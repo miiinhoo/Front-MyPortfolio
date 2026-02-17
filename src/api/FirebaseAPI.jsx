@@ -9,13 +9,11 @@ import {
 
 export const addComment = async (data) => {                         
 
-  const payload = {                                               
-    userId: data.userId,                                            
+  const payload = {                                                                                    
     comment: data.comment,                                           
     passwordHash: data.passwordHash,                                  
     createdAt: serverTimestamp(),                                   
-    uid: data.uid ?? null, 
-    isPrivate: data.isPrivate ?? false,                                     
+    uid: data.uid ?? null,                                 
   };
   return await addDoc(collection(db, "comments"), payload);       
 };

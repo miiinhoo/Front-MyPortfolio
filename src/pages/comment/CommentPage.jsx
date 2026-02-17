@@ -29,7 +29,6 @@ export default function CommentPage() {
   });
 
   const { isAdmin } = useAdmin();
-  const { bool: isPrivate, setBool: setIsPrivate } = useCustomHook();
 
   useEffect(() => {
     console.log(isAdmin);
@@ -46,33 +45,18 @@ export default function CommentPage() {
   });
 
   const submitHandler = () => {
-    if (!isAdmin && formData.userId.includes("admin") || formData.userId.includes("관리")) {
-      toast.error("불가능한 아이디입니다.");
-      return;
-    }
-    if (!formData.userId.trim()) {
-      toast.error("아이디를 입력하세요.");
-      return;
-    } else if (!formData.password.trim()) {
-      toast.error("비밀번호를 입력하세요.");
-      return;
-    } else if (!formData.comment.trim()) {
+  
+    if (!formData.comment.trim()) {
       toast.error("댓글을 입력하세요.");
       return;
     }
 
-    
-
-    if (
-      hasBadWord(formData.comment) ||
-      hasBadWord(formData.userId) ||
-      hasBadWord(formData.password)
-    ) {
-      toast.error("부적절한 단어가 포함되어 있습니다.");
+    if (hasBadWord(formData.comment)) {
+      toast.error("댓글에 부적절한 단어가 포함되어 있습니다.");
       return;
     }
 
-    tryAdd(null, isPrivate);
+    tryAdd(null);
   };
 
   return (
@@ -80,13 +64,7 @@ export default function CommentPage() {
       {sortedComments.length > 0 ? (
         <div className="comment-wrapper">
           {sortedComments.map((list, inx) => {
-            if (list.isPrivate && !isAdmin)
-              return (
-                <p key={inx} className="comment-content private">
-                  🔒 비밀글입니다.
-                </p>
-              );
-
+           
             if (list.isHidden && !isAdmin)
               return (
                 <p key={inx} className="comment-content hidden">
@@ -98,11 +76,9 @@ export default function CommentPage() {
               <div className="comment-content" key={inx}>
                 <div className="comment">
                   <span className={list.isAdmin ? "admin-name" : ""}>
-                    {list.isPrivate
-                      ? `🔒 비밀글 ${list.userId}`
-                      : list.isHidden
-                      ? `숨긴글 ${list.userId}`
-                      : list.userId}
+                    {list.isHidden
+                      ? `숨긴글 익명`+inx
+                      : list.isAdmin ? "관리자" : "익명" + inx}
                   </span>
                   <span>{list.comment}</span>
                   <span className="date">{formatDate(list.createdAt)}</span>
@@ -165,14 +141,7 @@ export default function CommentPage() {
           </label>
         ))}
 
-        <label className="secret-check">
-          <input
-            type="checkbox"
-            checked={isPrivate}
-            onChange={() => setIsPrivate((prev) => !prev)}
-          />
-          비밀글
-        </label>
+        
 
         <button type="button" onClick={submitHandler}>
           댓글작성

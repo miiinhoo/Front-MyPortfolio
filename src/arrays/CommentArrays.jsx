@@ -1,12 +1,6 @@
 export const Comment = [
     {
-        id: 1, text : "아이디", name : "userId", type: "text"
-    },
-    {
-        id: 2, text : "패스워드", name : "password", type: "password"
-    },
-    {
-        id: 3, text : "댓글", name : "comment", type:"textarea"
+        id: 1, text : "댓글", name : "comment", type:"textarea"
     },  
 ]
 // 관리자

@@ -19,17 +19,15 @@ export default function useFirebase({ initFormData, api }) {
     setComments(list);
   };
 
-  const tryAdd = async (uid = null, isPrivate = false, isHidden = false) => {
+  const tryAdd = async (uid = null, isHidden = false) => {
     try {
       const user = auth.currentUser;
-      let userId = formData.userId;
       let userUid = uid;
       let isAdminUser = false;
 
       if (user) {
         const token = await user.getIdTokenResult(true);
         if (token?.claims?.admin) {
-          userId = "관리자";
           userUid = user.uid;
           isAdminUser = true;
         } else {
@@ -38,11 +36,9 @@ export default function useFirebase({ initFormData, api }) {
       }
 
       const payload = {
-        userId,
         comment: formData.comment,
         passwordHash: await hashPassword(formData.password),
         uid: userUid ?? null,
-        isPrivate,
         isHidden,
         isAdmin: isAdminUser, 
         createdAt: new Date(), 
@@ -56,9 +52,7 @@ export default function useFirebase({ initFormData, api }) {
       toast.error("댓글 작성 중 오류가 발생했습니다.");
     }
   };
-  const tryDel = () => {
-    
-  }
+  
 
   return { formData, setFormData, comments, handleChange, tryGet, tryAdd };
 }
