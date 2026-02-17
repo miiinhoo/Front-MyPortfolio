@@ -333,15 +333,6 @@ export default function WoodenPage() {
             </ButtonComponent>
             <ButtonComponent
             types={"button"}
-            cln={"siteBtn"}
-            event={() => {
-               toast.success("ARIMA 예측 팀 프로젝트")
-            }}
-            >
-                <Link to={"/about/works/python"}>ARI<br/>MA</Link>
-            </ButtonComponent>
-            <ButtonComponent
-            types={"button"}
             cln={"downBtn"}
             event={() => {
                 window.scrollTo({
