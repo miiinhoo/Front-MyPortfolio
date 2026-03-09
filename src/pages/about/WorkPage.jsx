@@ -21,12 +21,12 @@ export default function WorkPage(){
                             </h3>
                             <p>Python + ARIMA</p>
                         </Link>
-                        <Link to={"paytime"}
+                        <Link to={"fontlab"}
                          className="site-box">
                             <h3>
-                                Paytime 개인 프로젝트
+                                FontLab 개인 프로젝트
                             </h3>
-                            <p>React + Typescript + Firebase</p>
+                            <p>ReactTS + Firebase + Zustand</p>
                         </Link>
                     </div>
                 </div>

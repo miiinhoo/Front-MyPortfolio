@@ -33,30 +33,5 @@ export const togglePrivateById = async (id, currentState) => {
   const commentRef = doc(db, "comments", id);
   await updateDoc(commentRef, { isHidden: !currentState });
 };
-// 관리자 로그인
-export async function loginAdmin(email, password) {
-  try {
-    const user = await signInWithEmailAndPassword(auth, email, password);
-    console.log("로그인 성공:", user.user.email);
+// ----기존 관리자 로그인,아웃 기능 삭제( api기능만 담당하게끔 ) -----
 
-    const token = await user.user.getIdTokenResult(true);
-    if (token.claims.admin) {
-      console.log("관리자 로그인 확인됨");
-    } else {
-      console.warn("관리자 권한 없음");
-    }
-  } catch (err) {
-    console.error("로그인 실패:", err);
-  }
-}
-
-// 관리자 로그아웃
-export async function logoutAdmin() {
-  try {
-    await signOut(auth);
-    alert("로그아웃 되었습니다.");
-    console.log("로그아웃 완료");
-  } catch (err) {
-    console.error("로그아웃 실패:", err);
-  }
-}

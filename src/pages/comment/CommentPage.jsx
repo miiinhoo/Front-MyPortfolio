@@ -9,10 +9,10 @@ import { Comment } from "../../arrays/CommentArrays";
 import { initFormData } from "../../arrays/InitFormArray";
 import useFirebase from "../../hooks/useFirebase";
 import { useAdmin } from "../../routers/protected/AdminContext";
-import useCustomHook from "../../hooks/useCustomHook";
 import { formatDate } from "../../utils/formatDate";
 import { hasBadWord } from "../../utils/filteredWord";
-import { toast } from "react-hot-toast";
+import useComments from "../../hooks/useComments";
+import usePagenation from "../../components/usePagination";
 
 const api = { get: getComments, add: addComment };
 
@@ -28,6 +28,21 @@ export default function CommentPage() {
     api,
   });
 
+  //페이지네이션 기능 추가
+  const {
+    page,
+    pageNumbers,
+    pageItems,
+    hasNextGroup,
+    hasPrevGroup,
+    goNext,
+    goPrev,
+    setPage,
+  } = usePagenation(formData,10,9);
+
+  // 댓글작성기능
+  const { submitHandler } = useComments(formData, tryAdd,hasBadWord);
+  // 관리자 판별 boolean
   const { isAdmin } = useAdmin();
 
   useEffect(() => {
@@ -35,35 +50,16 @@ export default function CommentPage() {
     tryGet();
   }, []);
 
-  
-  const sortedComments = comments
-  .slice()
-  .sort((a, b) => {
-    if (a.userId === "관리자" && b.userId !== "관리자") return -1;
-    if (a.userId !== "관리자" && b.userId === "관리자") return 1;
-    return (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0);
-  });
-
-  const submitHandler = () => {
-  
-    if (!formData.comment.trim()) {
-      toast.error("댓글을 입력하세요.");
-      return;
-    }
-
-    if (hasBadWord(formData.comment)) {
-      toast.error("댓글에 부적절한 단어가 포함되어 있습니다.");
-      return;
-    }
-
-    tryAdd(null);
-  };
 
   return (
     <div className="main-content page">
-      {sortedComments.length > 0 ? (
+      <div className="left-section">
+        좌측 구역
+      </div>
+      <div className="right-section">
+      {comments.length > 0 ? (
         <div className="comment-wrapper">
-          {sortedComments.map((list, inx) => {
+          {comments.map((list, inx) => {
            
             if (list.isHidden && !isAdmin)
               return (
@@ -117,29 +113,23 @@ export default function CommentPage() {
       ) : (
         <p>데이터가 없네요.</p>
       )}
-
+    {/** 댓글창 페이지네이션 구역 */}
+    <div className="pagenation">
+      
+    </div>
       {/* 댓글 입력 폼 */}
       <form className="comment-input">
-        {Comment.map((i) => (
-          <label key={i.id}>
-            {i.type === "textarea" ? (
-              <textarea
-                placeholder={i.text}
-                name={i.name}
-                value={formData[i.name] || ""}
-                onChange={handleChange}
-              />
-            ) : (
-              <input
-                type={i.type}
-                name={i.name}
-                placeholder={i.text}
-                value={formData[i.name] || ""}
-                onChange={handleChange}
-              />
-            )}
-          </label>
-        ))}
+      {Comment.map((i) => (
+        <label key={i.id}>
+          <textarea
+            style={{ resize: "none"}}
+            placeholder="익명으로 글을 남겨보세요."
+            name={i.name}
+            value={formData[i.name] || ""}
+            onChange={handleChange}
+          />
+        </label>
+      ))}
 
         
 
@@ -147,6 +137,7 @@ export default function CommentPage() {
           댓글작성
         </button>
       </form>
+      </div>
     </div>
   );
 }

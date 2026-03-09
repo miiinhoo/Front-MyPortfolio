@@ -3,6 +3,7 @@ import './App.scss'
 import { Toaster } from "react-hot-toast";
 import root from './routers/root'
 import './Tailwind.css';
+import './pages/Pages.scss';
 
 function App() {
   return (

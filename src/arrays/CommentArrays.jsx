@@ -2,6 +2,7 @@ export const Comment = [
     {
         id: 1, text : "댓글", name : "comment", type:"textarea"
     },  
+    // 익명 로그인 기능 삭제
 ]
 // 관리자
 export const Admin = [

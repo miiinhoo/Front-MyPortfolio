@@ -2,13 +2,22 @@ import { Link, useNavigate } from "react-router-dom";
 import { Nav } from "../../arrays/NavArrays";
 import { useAdmin } from "../../routers/protected/AdminContext";
 import ButtonComponent from "../../components/common/ButtonComponent";
-import { logoutAdmin } from "../../api/FirebaseAPI";
 import useCustomHook from "../../hooks/useCustomHook";
+import useAuth from "../../hooks/useAuth";
+import { useDropdownStore } from "../../utils/zustandSettings";
 
 export default function BasicHeader() {
   const { isAdmin } = useAdmin();
-  const { bool: openDropDown, setBool: setOpenDropDown,location } = useCustomHook();
+  const { location } = useCustomHook();
   const navigate = useNavigate();
+
+  // ------useAuth에 어드민 로그아웃 기능을 담게 함--------
+  const { handleAdminLogout } = useAuth();
+
+  // zustand store에서 headerDropdownOpen 상태 전역 관리
+  const headerDropdownOpen = useDropdownStore(state => state.headerDropdownOpen);
+  const setHeaderDropdownOpen = useDropdownStore(state => state.setHeaderDropdownOpen);
+  const toggleHeaderDropdown = useDropdownStore(state => state.toggleHeaderDropdown);
 
   return (
     <div className="header-inner">
@@ -32,10 +41,10 @@ export default function BasicHeader() {
               }
               // About일 때만 hover 열기/닫기
               onMouseEnter={() => {
-                if (item.text === "About") setOpenDropDown(true);
+                if (item.text === "About") setHeaderDropdownOpen(true);
               }}
               onMouseLeave={() => {
-                if (item.text === "About") setOpenDropDown(false);
+                if (item.text === "About") setHeaderDropdownOpen(false);
               }}
             >
               {item.text === "About" ? (
@@ -44,14 +53,14 @@ export default function BasicHeader() {
                   <button
                     type="button"
                     className="nav-link"
-                    onClick={() => setOpenDropDown((prev) => !prev)}
+                    onClick={() => toggleHeaderDropdown((prev) => !prev)}
                   >
                     About
                   </button>
 
                   <ul
                     className={
-                      "abs" + (openDropDown ? " down" : "")
+                      "abs" + (headerDropdownOpen ? " down" : "")
                     }
                   >
                     {item.option?.map((label) => {
@@ -62,7 +71,7 @@ export default function BasicHeader() {
                             type="button"
                             className="dropdown-link"
                             onClick={() => {
-                              setOpenDropDown(false);
+                              setHeaderDropdownOpen(false);
                               navigate(path);
                             }}
                           >
@@ -94,7 +103,8 @@ export default function BasicHeader() {
         {isAdmin && (
           <ButtonComponent
             text={"관리자 로그아웃"}
-            event={logoutAdmin}
+            // -------handleAdminLogout함수로 변경--------
+            event={handleAdminLogout}
             types={"button"}
             cln={"admin-logout"}
           />
