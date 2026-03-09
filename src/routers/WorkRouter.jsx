@@ -4,7 +4,8 @@ const loading = <div>로딩중...</div>
 
 const Work = lazy(() => import("../pages/about/WorkPage"));
 const Wooden = lazy(() => import("../pages/about/work/WoodenPage"));
-const Paytime = lazy(() => import("../pages/about/work/PaytimePage"));
+const FontLab = lazy(() => import("../pages/about/work/FontLabPage"));
+const Python = lazy(() => import("../pages/about/work/PythonPage"));
 
 const WorkRouter = [
     {
@@ -23,11 +24,19 @@ const WorkRouter = [
         </Suspense>),
     },
     {
-        path:"paytime",
+        path:"fontlab",
         element:(
         <Suspense fallback={loading}>
-            <Paytime/>
+            <FontLab/>
         </Suspense>)
+    },
+    {
+        path:"python",
+        element:(
+            <Suspense fallback={loading}>
+                <Python/>
+            </Suspense>
+        )
     }
 ]
 

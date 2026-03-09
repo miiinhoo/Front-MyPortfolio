@@ -317,10 +317,10 @@ export default function WoodenPage() {
             types={"button"}
             cln={"siteBtn"}
             event={() => {
-               toast.success("Paytime 개인 프로젝트")
+               toast.success("FontLab 개인 프로젝트")
             }}
             >
-                <Link to={"/about/works/paytime"}>Pay<br/>time</Link>
+                <Link to={"/about/works/fontlab"}>Font<br/>Lab</Link>
             </ButtonComponent>
             <ButtonComponent
             types={"button"}

@@ -4,6 +4,8 @@ import { auth } from "../firebase";
 import { hashPassword } from "../utils/hashPassword";
 import { useState } from "react";
 
+
+
 export default function useFirebase({ initFormData, api }) {
   const [formData, setFormData] = useState(initFormData());
   const [comments, setComments] = useState([]);
